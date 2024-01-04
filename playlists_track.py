@@ -3,7 +3,7 @@ from spotipy.oauth2 import SpotifyOAuth
 
 # Configurar as credenciais da API 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
-    scope='playlist-modify-private', 
+    scope='playlist-modify-private user-library-read user-top-read', 
     client_id='##',
     client_secret='##',
     redirect_uri='http://localhost:8888/callback'
@@ -29,7 +29,7 @@ def main():
         user = sp.me()['id'], 
         name = input('Digite o nome da sua playlist: '),
         public = False
-        )
+    )
 
     sp.playlist_add_items(playlist_id=playlist['id'], items= recommended_tracks)
     print(f"Playlist '{playlist['name']}' criada com sucesso!")
